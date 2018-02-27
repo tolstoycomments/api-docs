@@ -28,7 +28,7 @@ window.tolstoycomments.vidget.destroy(): void;
 // title - не обязательный аргумент, по умолчанию: document.title
 window.tolstoycomments.vidget.nav(url: string, title: string): void;
 ```
-### Запрос количества каментов
+### Запрос количества коментариев
 ```typescript
 // url - url адрес или массив строк url адресов по которым нужно сделать подсчет кол-ва каментов
 // callback - функция обратного вызова после получения ответа от сервера с данными
