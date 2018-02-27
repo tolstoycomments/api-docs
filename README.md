@@ -6,4 +6,13 @@
 //javascript code
 window.tolstoycomments.vidget
 ```
-
+### Открыть виджет
+```javascript
+//javascript code
+window.tolstoycomments.vidget.open();
+```
+### Закрыть виджет
+```javascript
+//javascript code
+window.tolstoycomments.vidget.close();
+```
