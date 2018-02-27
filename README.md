@@ -52,3 +52,12 @@ window.tolstoycomments.vidget.main(): void
 ```typescript
 window.tolstoycomments.vidget.auth(): void
 ```
+## Код инициализации
+По умолчанию код вызова виджета создает чат для текущей веб страницы.
+Чтобы загружать виджет на странице всех чатов нужно разместить следующий код сразу после вставки кода виджета:
+```javascript
+/* ... основной код виджета */
+<script>
+window.tolstoycomments.config = { main: true };
+</script>
+```
