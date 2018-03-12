@@ -1,34 +1,34 @@
 # Tolstoy Comment Api
-## Вставка кода на сайт
+### Вставка кода на сайт
 Образец кода для вставки на сайт можно взять после прохождения регистрации на сайте [tolstoycomments.com](http://panel.tolstoycomments.com/)
-## Основное Api
+### Основное Api
 Для доступа к настройкам виджена:
 ```javascript
 /// javascript
 window.tolstoycomments.vidget
 ```
-### Открыть виджет
+##### Открыть виджет
 ```javascript
 /// javascript
 window.tolstoycomments.vidget.open();
 ```
-### Закрыть виджет
+##### Закрыть виджет
 ```javascript
 /// javascript
 window.tolstoycomments.vidget.close();
 ```
-### Инициализовать виджет
+##### Инициализовать виджет
 по умолчанию, при загрузке страници, вызывается инициализация виджета
 ```javascript
 /// javascript
 window.tolstoycomments.vidget.init();
 ```
-### Удалить виджет
+##### Удалить виджет
 ```javascript
 /// javascript
 window.tolstoycomments.vidget.destroy();
 ```
-### Перейти на страницу чата
+##### Перейти на страницу чата
 в случае если виджет свернут он будет развернут
 в случае если страница чата совпадает с текущей открытой обновление не произойдет
 ```javascript
@@ -38,7 +38,7 @@ window.tolstoycomments.vidget.destroy();
 // identity: string - не обязательный аргумент, по умолчанию: MD5(document.location.href)
 window.tolstoycomments.vidget.nav(url, title, identity);
 ```
-### Запрос количества коментариев
+##### Запрос количества коментариев
 ```javascript
 /// javascript
 // url: string[] | string - url адрес или массив строк url адресов по которым
@@ -52,18 +52,18 @@ window.tolstoycomments.vidget.nav(url, title, identity);
 // возврат массива с одним значением
 window.tolstoycomments.vidget.countcomment(url, callback);
 ```
-### Перейти на главную страницу чата
+##### Перейти на главную страницу чата
 ```javascript
 /// javascript
 window.tolstoycomments.vidget.main();
 ```
-### Перейти на страницу авторизации
+##### Перейти на страницу авторизации
 ```javascript
 /// javascript
 window.tolstoycomments.vidget.auth();
 ```
-## Инициализация
-### Инициализация на странице всех чатов
+### Инициализация
+##### Инициализация на странице всех чатов
 По умолчанию код вызова виджета создает чат для текущей веб страницы.
 Чтобы загружать виджет на странице всех чатов нужно разместить следующий код сразу после вставки кода виджета:
 ```html
@@ -73,7 +73,7 @@ window.tolstoycomments.vidget.auth();
 window.tolstoycomments.config = { main: true };
 </script>
 ```
-### Инициализация с указание произвольных данных страницы
+##### Инициализация с указание произвольных данных страницы
 identity: произвольная строка которая служит идентификатором страницы сайта (это может быть порядковый номер статьи в базе или полная ссылка). По умолчанию расчитывается как MD5(document.location.href).
 
 url: ссылка на страницу сайта которая будет использована в виджете для перехода на текущую страницу сайта. По умолчанию берется значение document.location.href.
