@@ -33,10 +33,10 @@ window.tolstoycomments.vidget.destroy();
 в случае если страница чата совпадает с текущей открытой обновление не произойдет
 ```javascript
 /// javascript
-// url: string - не обязательный аргумент, по умолчанию: document.location.href
-// title: string - не обязательный аргумент, по умолчанию: document.title
-// identity: string - не обязательный аргумент, по умолчанию: MD5(document.location.href)
-window.tolstoycomments.vidget.nav(url, title, identity);
+// url: string - не обязательный, по умолчанию: document.location.href
+// title: string - не обязательный, по умолчанию: document.title
+// identity: string - не обязательный, по умолчанию: MD5(document.location.href)
+window.tolstoycomments.vidget.nav({url: url, title: title, identity: identity});
 ```
 ### Запрос количества коментариев
 ```javascript
