@@ -46,20 +46,6 @@ window.tolstoycomments.vidget.navfirst();
 // identity: string - не обязательный, по умолчанию: MD5(document.location.href)
 window.tolstoycomments.vidget.nav({url: url, title: title, identity: identity});
 ```
-### Запрос количества коментариев
-```javascript
-/// javascript
-// url: string[] | string - url адрес или массив строк url адресов по которым
-// нужно сделать подсчет кол-ва каментов
-// callback: (count: number[]) => void - функция обратного вызова после получения
-// ответа от сервера с данными
-// в качестве аргумента в нее передается массив чисел с 
-// количеством комментариев по каждой ссылке в том порядке, 
-// в каком были переданы ссылки массива url адресов.
-// если был передан только один url то в callback будет 
-// возврат массива с одним значением
-window.tolstoycomments.vidget.countcomment(url, callback);
-```
 ### Перейти на главную страницу чата
 ```javascript
 /// javascript
