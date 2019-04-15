@@ -255,3 +255,47 @@ SITE_ID задан в разделе Код - последний парамет�
 	}
 }
 ```
+## SSO авторизация
+Для авторизации виджета нужно передать токен авторизации в параметре `sso`:
+```html
+/// html
+<script type="text/javascript">
+    window.tolstoycomments.config = { 
+        sso: 'ТОКЕН ДЛЯ АВТОРИЗАЦИИ'
+    };
+</script>
+```
+Пример формирования токена для авторизации на Node.js:
+```node
+/// Node.js
+var arr = {
+	id: "id0", // произвольная уникальная строка (50 знаков максимум) - обязательный параметр
+	nick: "Иванов Иван", // имя пользователя (50 знаков максимум) - обязательный параметр
+	email: "temp@temp.temp", // почта (250 знаков максимум) - необязательный параметр
+	avatar: "https://static.tolstoycomments.com/ui/ac/b1/fa/acb1faad-2fad-441a-b789-da57f5317399.png" // ссылка на аватар - необязательный параметр
+};
+var key = "КЛЮЧ ДОСТУПА К API ИЗ НАСТРОЕК САЙТА";
+
+var userdata = window.btoa(unescape(encodeURIComponent(JSON.stringify(arr))));
+var microtime = Date.now();
+var signtext = userdata + key + microtime.toString();
+var sign = md5(signtext);
+var sso = userdata + " " + sign + " " + microtime;
+```
+Пример формирования токена для авторизации на PHP:
+```php
+/// PHP
+<?php
+    $arr = array(
+        'id' => 'id0',
+        'nick' => 'Иванов Иван',
+        'email' => 'temp@temp.temp',
+        'avatar' => 'https://static.tolstoycomments.com/ui/ac/b1/fa/acb1faad-2fad-441a-b789-da57f5317399.png'
+    );
+    $key = "123456789";
+    $userdata = base64_encode(json_encode($arr));
+    $timestamp = round(microtime(true) * 1000);
+    $sign = md5($userdata . $key . $timestamp);
+    echo "$userdata $sign $timestamp";
+?>
+```
