@@ -292,7 +292,7 @@ var sso = userdata + " " + sign + " " + microtime;
         'email' => 'temp@temp.temp',
         'avatar' => 'https://static.tolstoycomments.com/ui/ac/b1/fa/acb1faad-2fad-441a-b789-da57f5317399.png'
     );
-    $key = "123456789";
+    $key = "КЛЮЧ ДОСТУПА К API ИЗ НАСТРОЕК САЙТА";
     $userdata = base64_encode(json_encode($arr));
     $timestamp = round(microtime(true) * 1000);
     $sign = md5($userdata . $key . $timestamp);
