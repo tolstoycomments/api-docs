@@ -269,7 +269,8 @@ SITE_ID задан в разделе Код - последний парамет�
     };
 </script>
 ```
-Пример формирования токена для авторизации на Node.js:
+Ниже представлены примеры формирования токена для авторизации с использованием различных языков программирования.
+### Node.js
 ```node
 /// Node.js
 var arr = {
@@ -286,7 +287,7 @@ var signtext = userdata + key + microtime.toString();
 var sign = md5(signtext);
 var sso = userdata + " " + sign + " " + microtime;
 ```
-Пример формирования токена для авторизации на PHP:
+### PHP
 ```php
 /// PHP
 <?php
@@ -302,4 +303,19 @@ var sso = userdata + " " + sign + " " + microtime;
     $sign = md5($userdata . $key . $timestamp);
     echo "$userdata $sign $timestamp";
 ?>
+```
+### Ruby
+```ruby
+content = Base64.strict_encode64(
+  {
+        id: 'id0',
+      nick: 'Иванов Иван',
+     email: 'temp@temp.temp',
+    avatar: 'https://static.tolstoycomments.com/ui/ac/b1/fa/acb1faad-2fad-441a-b789-da57f5317399.png'
+  }.to_json
+)
+timestamp = Time.now.to_i * 1_000
+sign      = Digest::MD5.hexdigest("#{content}#{token}#{timestamp}")
+
+[content, sign, timestamp].join(" ")
 ```
