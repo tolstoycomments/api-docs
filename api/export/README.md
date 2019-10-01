@@ -83,25 +83,7 @@ SITE_ID можно найти в разделе Код.
 				"title": "title",
 				"url": "http://tolstoycomments.com/",
 				"hash": "f235a5d0e80b79888240d027c46a7ab5",
-				"count_comment": 512,
-				"comment": {
-					"id": 0,
-					"text_template": "123123<br/>4324<br/>345<br/>4567<br/>342<br/>345<br/>345<br/>24234",
-					"data_create": "2019-09-16T11:12:38+00:00",
-					"user": {
-						"id": 0,
-						"name": "Иван Иванов",
-						"nick": "ivan_ivanov",
-						"ava": null,
-						"online": true,
-						"data_last_visit": "2019-09-25T13:46:21+00:00"
-					},
-					"raiting": { "id": 0, "val": 1, "user_val": 0 },
-					"attaches": [],
-					"attaches_text": "",
-					"edited": false,
-					"comment_type": 0
-				}
+				"count_comment": 512
 			}
 		]
 	}
