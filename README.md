@@ -5,46 +5,46 @@
 Для доступа к настройкам виджета:
 ```javascript
 /// javascript
-window.tolstoycomments.vidget
+window.tolstoycomments.widget
 ```
 ### Открыть виджет
 ```javascript
 /// javascript
-window.tolstoycomments.vidget.open();
+window.tolstoycomments.widget.open();
 ```
 ### Закрыть виджет
 ```javascript
 /// javascript
-window.tolstoycomments.vidget.close();
+window.tolstoycomments.widget.close();
 ```
 ### Проверка состояние виджета
 ```javascript
 /// javascript
-window.tolstoycomments.vidget.isopen(); // return type bool
+window.tolstoycomments.widget.isopen(); // return type bool
 ```
 ### Инициализивать виджет
 по умолчанию, при загрузке страницы, вызывается инициализация виджета
 ```javascript
 /// javascript
-window.tolstoycomments.vidget.init();
+window.tolstoycomments.widget.init();
 ```
 ### Удалить виджет
 ```javascript
 /// javascript
-window.tolstoycomments.vidget.destroy();
+window.tolstoycomments.widget.destroy();
 ```
 ### Открыть начальную страницу
 Страница будет запущена с настройками переданными в 'window.tolstoycomments.config'. 
 В случае, если страница чата совпадает с текущей открытой, обновление не произойдет.
 ```javascript
 /// javascript
-window.tolstoycomments.vidget.navfirst();
+window.tolstoycomments.widget.navfirst();
 ```
 ### Перейти на страницу чата
 В случае, если страница чата совпадает с текущей открытой, обновление не произойдет.
 ```javascript
 /// javascript
-window.tolstoycomments.vidget.nav({
+window.tolstoycomments.widget.nav({
 	url: url, // url: string - не обязательный, по умолчанию: document.location.href
 	title: title, // title: string - не обязательный, по умолчанию: document.title
 	identity: identity // identity: string - не обязательный, по умолчанию: MD5(document.location.href)
@@ -53,12 +53,12 @@ window.tolstoycomments.vidget.nav({
 ### Перейти на главную страницу чата
 ```javascript
 /// javascript
-window.tolstoycomments.vidget.main();
+window.tolstoycomments.widget.main();
 ```
 ### Перейти на страницу авторизации
 ```javascript
 /// javascript
-window.tolstoycomments.vidget.auth();
+window.tolstoycomments.widget.auth();
 ```
 ## Инициализация
 ### Инициализация на странице всех чатов
@@ -225,7 +225,7 @@ title: заголовок страницы сайта. По умолчанию �
 	},
 	comment_button_text: "Обсудить", // на мобильных устройствах при выборе дизайна с вызовом виджета по кнопке
 	desktop_class: "tolstoycomments-feed", // класс элемента в который будет отрендерин виджет при встроенном в сайт дизайне
-	success: () => {}, // callback функция для полчения доступа к методов виджета объекта tolstoycomments.vidget
+	success: () => {}, // callback функция для полчения доступа к методов виджета объекта tolstoycomments.widget
 	scroll_border_top: 0, // отступ сверху при отображении виджета встроенным в статью
 	scroll_border_bottom: 0, // отступ снизу при отображении виджета встроенным в статью
 	sso: null,
@@ -263,8 +263,8 @@ function IsMobile() {
 ## Встроенные события виджета
 ```javascript
 /// javascript
-window.tolstoycomments.vidget.on(event, callback); // подписываемся на событие
-window.tolstoycomments.vidget.off(event, callback); // отписываемся от события
+window.tolstoycomments.widget.on(event, callback); // подписываемся на событие
+window.tolstoycomments.widget.off(event, callback); // отписываемся от события
 ```
 Поддерживаемые типы событий:
 1. `ready` - вызывается после загрузки фрейма и до его показа
