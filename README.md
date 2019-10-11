@@ -119,7 +119,7 @@
 /// html
 <span class="tolstoycomments-cc" data-url="https://google.com/">Нет комментариев</span>
 или
-<span class="tolstoycomments-cc" data-identity="CUSTOM ID"></span>
+<span class="tolstoycomments-cc" data-identity="CUSTOM ID">Нет комментариев</span>
 ```
 В параметре `data-url` нужно передать полную ссылку на статью, для которой необходимо сделать вывод количества комментариев.
 
