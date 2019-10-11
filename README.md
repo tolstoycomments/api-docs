@@ -3,7 +3,7 @@
 Основные вопросы на которые будут даны ответы в этой документации:
 1. Как вставить виджет комментариев на сайт.
 2. Как разместить счетчик комментариев под статьёй.
-3. Как вывести счетчик комментариев на против каждой новости на главной и в разделе новостей странице.
+3. Как вывести счетчик комментариев на против каждой новости на главной и в разделе новостей.
 4. Как вставить виджет с самыми обсуждаемыми статьями на сайте.
 5. Как кстативить кнопку на сайт с вызовом виджета.
 
@@ -97,6 +97,7 @@
 Чтобы сделать вывод счетчика комментариев на странице, нужно вызвать код ниже. По умолчанию компонент счетчика комментариев выключен.
 ```html
 /// html
+<!-- Tolstoy Comments Comment Counter -->
 <script type="text/javascript">
 	window["tolstoycomments"] = window["tolstoycomments"] || [];
 	window["tolstoycomments"].push({
@@ -106,6 +107,7 @@
 		}
 	});
 </script>
+<!-- /Tolstoy Comments Comment Counter -->
 ```
 Для вывода счетчика комментариев нужно создать html элемент с классом, переданным в переменной `comment_class`. Пример:
 ```html
@@ -122,6 +124,38 @@
 <span class="tolstoycomments-cc" data-identity="CUSTOM ID">Нет комментариев</span>
 ```
 В параметре `data-url` нужно передать полную ссылку на статью, для которой необходимо сделать вывод количества комментариев.
+
+Если нужно вывести счетчик комментариев на главной странице или в разделе новостей, но при этом не выводить сам виджет, то достаточно подключить основной код виджета и код компонента счетчика комментариев.
+Пример:
+```html
+/// html
+<!-- Tolstoy Comments Init -->
+<script type="text/javascript">
+	!(function(w, d, s, l, x) {
+		w[l] = w[l] || [];
+		w[l].t = w[l].t || new Date().getTime();
+		var f = d.getElementsByTagName(s)[0],
+			j = d.createElement(s);
+		j.async = !0;
+		j.src = "//test.tolstoycomments.com/sitejs/app.js?i=" + l + "&x=" + x + "&t=" + w[l].t;
+		f.parentNode.insertBefore(j, f);
+	})(window, document, "script", "tolstoycomments", "SITE_ID");
+</script>
+<!-- /Tolstoy Comments Init -->
+
+<!-- Tolstoy Comments Comment Counter -->
+<div class="tolstoycomments-feed"></div>
+<script type="text/javascript">
+	window["tolstoycomments"] = window["tolstoycomments"] || [];
+	window["tolstoycomments"].push({
+		action: "init",
+		values: {
+			comment_class: "tolstoycomments-cc"
+		}
+	});
+</script>
+<!-- /Tolstoy Comments Comment Counter -->
+```
 
 ## Счетчик комментариев в собственном стиле
 Для создания собственного стиля вывода числа комментариев предусмотрена функция `comment_render`. Пример этой функции по умолчанию:
