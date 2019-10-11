@@ -33,22 +33,9 @@
 ```
 `SITE_ID` - идентификатор вашего сайта
 
-После инициализации основго кода, можно делать перечу различных параметров в виджет. Старый метод инициализации параметров строится на основе переменной `window.tolstoycomments.config`. Однако, такой подход не очень удобный, поскольку может привести к вставки кода подобного примеру ниже:
-```html
-/// html
-<script type="text/javascript">
-	window.tolstoycomments.config = {
-		visible: true
-	};
-</script>
-<!-- CUSTOM HTML -->
-<script type="text/javascript">
-	window.tolstoycomments.config = {
-		desktop_class: 'tolstoycomments-feed'
-	};
-</script>
-```
-В этом случае одни настройки будут перезаписаны другими настройками и `visible: true` не будет задан. В новой версии передача параметров инициализации происходит вот так:
+После инициализации основго кода, можно делать перечу различных параметров в виджет. Есть два способа инициализации параметров:
+1. через `window.tolstoycomments.push`;
+пример:
 ```html
 /// html
 <script type="text/javascript">
@@ -60,45 +47,35 @@
 		}
 	});
 </script>
-<!-- CUSTOM HTML -->
-<script type="text/javascript">
-	window["tolstoycomments"] = window["tolstoycomments"] || [];
-	window["tolstoycomments"].push({
-		action: "init",
-		values: {
-			desktop_class: "tolstoycomments-feed"
-		}
-	});
-</script>
 ```
-Пример выше будет эквиволентен примеру:
-```html
-/// html
-<script type="text/javascript">
-	window["tolstoycomments"] = window["tolstoycomments"] || [];
-	window["tolstoycomments"].push({
-		action: "init",
-		values: {
-			visible: true,
-			desktop_class: "tolstoycomments-feed"
-		}
-	});
-</script>
-```
-И все это эквиволентно:
+2. переменной `window.tolstoycomments.config = { }`.
+пример: 
 ```html
 /// html
 <script type="text/javascript">
 	window.tolstoycomments.config = {
-		visible: true,
-		desktop_class: 'tolstoycomments-feed'
+		visible: true
 	};
 </script>
 ```
-> Параметры переданные с помощью `action: "init"` всегда будут перезаписывать параметры переданные через `window.tolstoycomments.config`.
+Мы рекомендуем использовать первый вариант с `window.tolstoycomments.push`.
+> Параметры переданные через `window["tolstoycomments"].push` всегда будут перезаписывать параметры переданные через `window.tolstoycomments.config`.
+Пример перезаписи настроек переданных через `window.tolstoycomments.push`:
+```html
+/// html
+<script type="text/javascript">
+	window["tolstoycomments"] = window["tolstoycomments"] || [];
+	window["tolstoycomments"].push({ action: "init", values: { visible: true } });
+</script>
+<script type="text/javascript">
+	window["tolstoycomments"] = window["tolstoycomments"] || [];
+	window["tolstoycomments"].push({ action: "init", values: { visible: false } });
+</script>
+```
+Здесь в виджет будет передан `visible: false`.
 
 ## Подключение виджета с комментариями
-Чтобы вывести виджет с комментариями на странице сайта нужно разместить следующий код:
+Чтобы вывести виджет с комментариями на странице сайта сразу после ее загрузки нужно разместить следующий код:
 ```html
 /// html
 <!-- Tolstoy Comments Widget -->
@@ -118,6 +95,7 @@
 Пример:
 ```html
 /// html
+<div class="CUSTOM_CLASS_NAME"></div>
 <script type="text/javascript">
 	window["tolstoycomments"] = window["tolstoycomments"] || [];
 	window["tolstoycomments"].push({
