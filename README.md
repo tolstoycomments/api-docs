@@ -162,22 +162,32 @@
 ```html
 /// html
 <!-- Tolstoy Comments Init -->
-<script type="text/javascript">!(function(w,d,s,l,x){w[l]=w[l]||[];w[l].t=w[l].t||new Date().getTime();var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=!0;j.src='//test.tolstoycomments.com/sitejs/app.js?i='+l+'&x='+x+'&t='+w[l].t;f.parentNode.insertBefore(j,f);})(window,document,'script','tolstoycomments','SITE ID');</script>
+<script type="text/javascript">
+	!(function(w, d, s, l, x) {
+		w[l] = w[l] || [];
+		w[l].t = w[l].t || new Date().getTime();
+		var f = d.getElementsByTagName(s)[0],
+			j = d.createElement(s);
+		j.async = !0;
+		j.src = "//test.tolstoycomments.com/sitejs/app.js?i=" + l + "&x=" + x + "&t=" + w[l].t;
+		f.parentNode.insertBefore(j, f);
+	})(window, document, "script", "tolstoycomments", "SITE ID");
+</script>
 <!-- /Tolstoy Comments Init -->
 
 <!-- Tolstoy Comments MiniWidget -->
-<div id='tolstoycomments-chattop'></div>
+<div id="tolstoycomments-chattop"></div>
 <script type="text/javascript">
-	window['tolstoycomments'] = window['tolstoycomments'] || [];
-	window['tolstoycomments'].push({
-		action: 'miniwidget',
+	window["tolstoycomments"] = window["tolstoycomments"] || [];
+	window["tolstoycomments"].push({
+		action: "miniwidget",
 		values: {
-			id: 'tolstoycomments-chattop',
-			key: '4303c533880240a4a9adb39396acc2f6',
-			type: 'chattop',
+			id: "tolstoycomments-chattop",
+			key: "4303c533880240a4a9adb39396acc2f6",
+			type: "chattop",
 			take: 5,
-			interval: 'month',
-			title: 'Самые обсуждаемые записи'
+			interval: "month",
+			title: "Самые обсуждаемые записи"
 		}
 	});
 </script>
