@@ -72,7 +72,7 @@
 </script>
 ```
 Здесь в виджет будет передан `visible: false` поскольку оно находится ниже.
-> Параметры переданные через `window["tolstoycomments"].push` всегда будут перезаписывать параметры переданные через `window.tolstoycomments.config`.
+> Параметры, переданные через `window["tolstoycomments"].push` всегда будут перезаписывать параметры переданные через `window.tolstoycomments.config`.
 
 ## Подключение виджета с комментариями
 По умолчанию основной код инициализации загружается с параметром `visible: false`. Чтобы виджет с комментариями отобрахился на странице сразу после ее загрузки, нужно передать в настройках инициализации `visible: true`:
@@ -156,6 +156,50 @@
 </script>
 <!-- /Tolstoy Comments Comment Counter -->
 ```
+
+## Мини-виджеты
+Мини-виджеты позволяют вывести самые горячие материалы на сайте. Получить код минивиджета можно из раздела **Мини-виджеты** панели администрирования. Пример кода мини-виджета:
+```html
+/// html
+<!-- Tolstoy Comments Init -->
+<script type="text/javascript">!(function(w,d,s,l,x){w[l]=w[l]||[];w[l].t=w[l].t||new Date().getTime();var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=!0;j.src='//test.tolstoycomments.com/sitejs/app.js?i='+l+'&x='+x+'&t='+w[l].t;f.parentNode.insertBefore(j,f);})(window,document,'script','tolstoycomments','SITE ID');</script>
+<!-- /Tolstoy Comments Init -->
+
+<!-- Tolstoy Comments MiniWidget -->
+<div id='tolstoycomments-chattop'></div>
+<script type="text/javascript">
+	window['tolstoycomments'] = window['tolstoycomments'] || [];
+	window['tolstoycomments'].push({
+		action: 'miniwidget',
+		values: {
+			id: 'tolstoycomments-chattop',
+			key: '4303c533880240a4a9adb39396acc2f6',
+			type: 'chattop',
+			take: 5,
+			interval: 'month',
+			title: 'Самые обсуждаемые записи'
+		}
+	});
+</script>
+<!-- /Tolstoy Comments MiniWidget -->
+```
+`id` - идентификатор элемента для вывода мини-виджета
+
+`key` - клиентский ключ для вывода виджета
+
+`type` - тип виджета. 
+Возможные значения: 
+- `chattop` - список чатов по убыванию кол-ва комментариев, 
+- `commenttop` - список комментариев по убыванию рейтинга, 
+- `commentlast` - список комментариев по дате публикации.
+
+`take` - кол-во выводим записей (от 1 до 100)
+
+`interval` - интервал выборки от текущей даты: `day`, `week`, `month` или `year`
+
+`title` - заголовок виджета
+
+На странице можно вывести сколько угодно виджетов, главное задавать им всем разный id.
 
 ## Счетчик комментариев в собственном стиле
 Для создания собственного стиля вывода числа комментариев предусмотрена функция `comment_render`. Пример этой функции по умолчанию:
