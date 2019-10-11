@@ -183,7 +183,7 @@
 		action: "miniwidget",
 		values: {
 			id: "tolstoycomments-chattop",
-			key: "4303c533880240a4a9adb39396acc2f6",
+			key: "KEY",
 			type: "chattop",
 			take: 5,
 			interval: "month",
