@@ -59,7 +59,6 @@
 </script>
 ```
 Мы рекомендуем использовать первый вариант с `window.tolstoycomments.push`.
-> Параметры переданные через `window["tolstoycomments"].push` всегда будут перезаписывать параметры переданные через `window.tolstoycomments.config`.
 Пример перезаписи настроек переданных через `window.tolstoycomments.push`:
 ```html
 /// html
@@ -72,10 +71,11 @@
 	window["tolstoycomments"].push({ action: "init", values: { visible: false } });
 </script>
 ```
-Здесь в виджет будет передан `visible: false`.
+Здесь в виджет будет передан `visible: false` поскольку оно находится ниже.
+> Параметры переданные через `window["tolstoycomments"].push` всегда будут перезаписывать параметры переданные через `window.tolstoycomments.config`.
 
 ## Подключение виджета с комментариями
-Чтобы вывести виджет с комментариями на странице сайта сразу после ее загрузки нужно разместить следующий код:
+По умолчанию основной код инициализации загружается с параметром `visible: false`. Чтобы виджет с комментариями отобрахился на странице сразу после ее загрузки, нужно передать в настройках инициализации `visible: true`:
 ```html
 /// html
 <!-- Tolstoy Comments Widget -->
@@ -91,7 +91,97 @@
 </script>
 <!-- /Tolstoy Comments Widget -->
 ```
-По умолчанию основной код инициализации загружается с параметром `visible: false`. Чтобы виджет с комментариями отобрахился на странице нужно передать в настройках инициализации `visible: true`. Тег с классом `tolstoycomments-feed` задан в настройках по умолчанию. Название класса можно изменить, задав имя нужного класса в параметре `desktop_class`.
+Тег с классом `tolstoycomments-feed` задан в настройках по умолчанию. Как изменить класс можно найти в разделе всех параметров инициализации. Как будет выглядеть виджет на странице сайта, вы можете задать на странице дизайна в панели администрирования.
+
+## Счетчик комментариев
+Чтобы сделать вывод счетчика комментариев на странице, нужно вызвать код ниже. По умолчанию компонент счетчика комментариев выключен.
+```html
+/// html
+<script type="text/javascript">
+	window["tolstoycomments"] = window["tolstoycomments"] || [];
+	window["tolstoycomments"].push({
+		action: "init",
+		values: {
+			comment_class: "tolstoycomments-cc"
+		}
+	});
+</script>
+```
+Для вывода счетчика комментариев нужно создать html элемент с классом, переданным в переменной `comment_class`. Пример:
+```html
+/// html
+<span class="tolstoycomments-cc" data-url="https://google.com/"></span>
+или
+<span class="tolstoycomments-cc" data-identity="CUSTOM ID"></span>
+```
+Пример счетчика с текстом `Нет комментариев` по умолчанию:
+```html
+/// html
+<span class="tolstoycomments-cc" data-url="https://google.com/">Нет комментариев</span>
+или
+<span class="tolstoycomments-cc" data-identity="CUSTOM ID"></span>
+```
+В параметре `data-url` нужно передать полную ссылку на статью, для которой необходимо сделать вывод количества комментариев.
+
+## Счетчик комментариев в собственном стиле
+Для создания собственного стиля вывода числа комментариев предусмотрена функция `comment_render`. Пример этой функции по умолчанию:
+```html
+/// html
+/* ... основной код виджета */
+<script>
+	window["tolstoycomments"] = window["tolstoycomments"] || [];
+	window["tolstoycomments"].push({
+		action: "init",
+		values: {
+			comment_render: function(val) {
+				return val.toString();
+			}
+		}
+	});
+</script>
+```
+Функция `comment_render` вызывается после получения числа коментариев с сервера виджета. В переменной `val` передается число комментариев. В переменной `this` внутри функции будет передан html-элемент, в который происходит вывод. Функцию `comment_render` можно вызывать без return, в этом случае вы сами должны описать локигу вывода.
+Пример собственного стиля вывода счетчика комментариев:
+```html
+/// html
+/* ... основной код виджета */
+<script>
+	window["tolstoycomments"] = window["tolstoycomments"] || [];
+	window["tolstoycomments"].push({
+		action: "init",
+		values: {
+			comment_render: function(val) {
+				this.textContent = val + " комментари" + GetNumEnding(val, "й", "я", "ев");
+			}
+		}
+	});
+	var GetNumEnding = function(n, a, b, c) {
+		var v = parseInt(n % 100);
+		if (v >= 11 && v <= 19) {
+			return c;
+		} else {
+			v = parseInt(n % 10);
+			if (v == 1) {
+				return a;
+			} else {
+				if (v >= 2 && v <= 4) {
+					return b;
+				} else {
+					return c;
+				}
+			}
+		}
+	};
+</script>
+```
+Результат:
+* 0 комментариев
+* 1 комментарий
+* 2 комментария
+* 5 комментариев
+
+## Задание произвольного класса для вывода виджета
+Тег с классом `tolstoycomments-feed` задан в настройках по умолчанию. Название класса можно изменить, задав имя нужного класса в параметре `desktop_class`.
 Пример:
 ```html
 /// html
