@@ -171,7 +171,7 @@
 		j.async = !0;
 		j.src = "//test.tolstoycomments.com/sitejs/app.js?i=" + l + "&x=" + x + "&t=" + w[l].t;
 		f.parentNode.insertBefore(j, f);
-	})(window, document, "script", "tolstoycomments", "SITE ID");
+	})(window, document, "script", "tolstoycomments", "SITE_ID");
 </script>
 <!-- /Tolstoy Comments Init -->
 
