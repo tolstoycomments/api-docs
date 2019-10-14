@@ -285,7 +285,45 @@
 	});
 </script>
 ```
-
+## Методы работы с виджетом
+Этот раздел предназначен для более тонкой настройки интеграции виджета.
+Виджет начинает работу после подключение скрипта из раздела Инициализация. (раздел *код* из панели администрирования.
+После загрузки скрипта инициализации вызывается метод-функция `success` из скрипта инициализации. Пример:
+```html
+/// html
+<script type="text/javascript">
+	window["tolstoycomments"] = window["tolstoycomments"] || [];
+	window["tolstoycomments"].push({
+		action: "init",
+		values: {
+			success: function() {
+				// your code
+			}
+		}
+	});
+</script>
+```
+Скрипт инициализации подключяет основные компоненты:
+- `tolstoycomments.widget` - основной виджет с комментариями;
+- `tolstoycomments.comment` - счетчик кол-ва комментариев;
+- `tolstoycomments.miniwidgets` - мини-виджеты.
+### Методы основного виджета с комментариями - `widget`
+- `tolstoycomments.widget.init()` - создать виджет с комментариями
+- `tolstoycomments.widget.destroy()` - удалить виджет с комментариями
+- `tolstoycomments.widget.open()` - открывает виджет
+- `tolstoycomments.widget.close()` - закрыть виджет
+- `tolstoycomments.widget.isopen()` - возвращает состояния виджета (открыт/закрыт)
+- `tolstoycomments.widget.navfirst()` - страница будет запущена с настройками переданными в 'tolstoycomments.config'. В случае, если страница чата совпадает с текущей открытой, обновление не произойдет.
+- перейти на страницу чата
+```javascript
+tolstoycomments.widget.nav({
+	url: url, // url: string - не обязательный, по умолчанию: document.location.href
+	title: title, // title: string - не обязательный, по умолчанию: document.title
+	identity: identity // identity: string - не обязательный, по умолчанию: MD5(document.location.href)
+})
+```
+- `tolstoycomments.widget.main()` - перейти на страницу всех чатов
+- `tolstoycomments.widget.auth()` - перейти на страницу авторизации
 ## Полный список всех параметров инициализации виджета
 Указан весь список параметров инициализации виджета с параметрами по умолчанию
 ```html
