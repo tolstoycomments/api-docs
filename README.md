@@ -324,6 +324,21 @@ tolstoycomments.widget.nav({
 ```
 - `tolstoycomments.widget.main()` - перейти на страницу всех чатов
 - `tolstoycomments.widget.auth()` - перейти на страницу авторизации
+### Методы счетчика кол-ва комментариев - `comment`
+- `tolstoycomments.comment.update()` - обновить кол-во комментариев во всех блоках на странице сайта. Этот метод подойдет для сайтов с подгружаемым содержимым, когда нужно подгрузить список публикаций и показать для них актуальное кол-во комментариев.
+### Методы мини-виджетов - `miniwidgets`
+- `tolstoycomments.miniwidgets.create(obj)` - создать минивиджет
+```javascript
+var obj = {
+	id: "tolstoycomments-chattop",
+	key: "KEY",
+	type: "chattop",
+	take: 5,
+	interval: "month",
+	title: "Самые обсуждаемые записи"
+}
+```
+- `tolstoycomments.miniwidgets.destroy(id)` - удалить минивиджет
 ## Полный список всех параметров инициализации виджета
 Указан весь список параметров инициализации виджета с параметрами по умолчанию
 ```html
