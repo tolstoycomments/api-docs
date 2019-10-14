@@ -307,7 +307,7 @@
 - `tolstoycomments.widget` - основной виджет с комментариями;
 - `tolstoycomments.comment` - счетчик кол-ва комментариев;
 - `tolstoycomments.miniwidgets` - мини-виджеты.
-### Методы основного виджета с комментариями - `widget`
+### Методы - `widget`
 - `tolstoycomments.widget.init()` - создать виджет с комментариями
 - `tolstoycomments.widget.destroy()` - удалить виджет с комментариями
 - `tolstoycomments.widget.open()` - открывает виджет
@@ -324,9 +324,17 @@ tolstoycomments.widget.nav({
 ```
 - `tolstoycomments.widget.main()` - перейти на страницу всех чатов
 - `tolstoycomments.widget.auth()` - перейти на страницу авторизации
-### Методы счетчика кол-ва комментариев - `comment`
+### События - `widget`
+- `tolstoycomments.widget.on(event, callback)` - подписаться на событие
+- `tolstoycomments.widget.off(event, callback)` - отписаться от события
+Поддерживаемые типы событий:
+- ready - вызывается после загрузки виджета с комментариями и до его показа
+- domready - вызывается после первого показа виджета с комментариями
+- open - событие открытия виджета
+- close - событие закрытия виджета
+### Методы - `comment`
 - `tolstoycomments.comment.update()` - обновить кол-во комментариев во всех блоках на странице сайта. Этот метод подойдет для сайтов с подгружаемым содержимым, когда нужно подгрузить список публикаций и показать для них актуальное кол-во комментариев.
-### Методы мини-виджетов - `miniwidgets`
+### Методы - `miniwidgets`
 - `tolstoycomments.miniwidgets.create(obj)` - создать минивиджет
 ```javascript
 var obj = {
