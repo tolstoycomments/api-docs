@@ -285,6 +285,60 @@
 </script>
 ```
 
+## Полный список всех параметров инициализации виджета
+Указан весь список параметров инициализации виджета с параметрами по умолчанию
+```html
+/// html
+<script type="text/javascript">
+    window.tolstoycomments.config = { 
+	main: false, // если задать true то выведить список чатов
+	identity: null, // identity текущей страницы
+	url: NormolizeURL(document.location.href), // url текущий страницы, по умолчанию используется встроенная функция
+	title: LoadTitle(window), // заголовок текущей страницы, по умолчанию используется встроенная функция LoadTitle
+	visible: false, // загружать виджет комментариев
+	comment_class: "", // класс элементов для вывода кол-ва комментариев в статьях
+	comment_render: CommentRender, // функция рендеринга кол-ва комментариев, this - текущий DOM элемент
+	comment_button_text: "Обсудить", // на мобильных устройствах при выборе дизайна с вызовом виджета по кнопке
+	desktop_class: "tolstoycomments-feed", // класс элемента в который будет отрендерин виджет при встроенном в сайт дизайне
+	success: () => {}, // callback функция для полчения доступа к методов виджета объекта tolstoycomments.widget
+	scroll_border_top: 0, // отступ сверху при отображении виджета встроенным в статью
+	scroll_border_bottom: 0, // отступ снизу при отображении виджета встроенным в статью
+	sso: null,
+	mobile: IsMobile() // текущая платформа на которой был загружен виджет, по умолчанию используется встроенная функция
+    };
+</script>
+```
+Тексты встроенных функций, используемые в инициализации виджета.
+```javascript
+/// javascript
+function CommentRender(val) {
+	return val.toString(); // this - текущий DOM элемент
+}
+function NormolizeURL(url) {
+	let u = url,
+		h = u.indexOf("#"),
+		q = u.indexOf("?");
+	if (h != -1) {
+		u = u.substr(0, h);
+	}
+	if (q != -1) {
+		u = u.substr(0, q);
+	}
+	return u;
+}
+function LoadTitle(win) {
+	var titles = win.document.getElementsByTagName("title");
+	if (titles.length > 0) {
+		return trim(titles[0].innerText).substr(0, 255);
+	} else {
+		return "";
+	}
+}
+function IsMobile() {
+	return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+}
+```
+
 ## SSO авторизация
 Для авторизации виджета нужно передать токен авторизации в параметре `sso`:
 ```html
