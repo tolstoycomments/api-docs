@@ -59,6 +59,7 @@
 </script>
 ```
 Мы рекомендуем использовать первый вариант с `window.tolstoycomments.push`.
+
 Пример перезаписи настроек переданных через `window.tolstoycomments.push`:
 ```html
 /// html
