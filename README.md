@@ -335,7 +335,7 @@ tolstoycomments.widget.nav({
 ### Методы - `comment`
 - `tolstoycomments.comment.update()` - обновить кол-во комментариев во всех блоках с классов `comment_class` на странице сайта. Этот метод подойдет для сайтов с подгружаемым содержимым, когда нужно подгрузить список публикаций и показать для них актуальное кол-во комментариев.
 ### Методы - `miniwidgets`
-- `tolstoycomments.miniwidgets.create(obj)` - создать минивиджет
+- `tolstoycomments.miniwidgets.create(obj)` - создать минивиджет. Переменная `obj` аналогична списку параметров при инициализации минивиджета.
 ```javascript
 var obj = {
 	id: "tolstoycomments-chattop",
