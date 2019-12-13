@@ -481,7 +481,7 @@ var obj = {
 Тексты встроенных функций, используемые в инициализации виджета.
 ```javascript
 /// javascript
-function CreateTheme(color) {
+function CreateTheme(color) { // color: 0-360 number
 	return {
 		colorBlack: "#000",
 		colorWrite: "#fff",
