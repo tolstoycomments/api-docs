@@ -467,7 +467,13 @@ var obj = {
 			sso: null,
 			// текущая платформа на которой был загружен виджет, 
 			// по умолчанию используется встроенная функция
-			mobile: IsMobile()
+			mobile: IsMobile(),
+			// кастомные настойки цветовой схемы виджета
+			// по умолчанию используется функция создания темы CreateTheme описанная ниже
+			// которая использует переменную цвета из административной панели
+			// пример смены цвета ссылок:
+			// theme: { colorLink: 'red' }
+			theme: null, // CreateTheme(color)
 		}
 	});
 </script>
@@ -475,6 +481,21 @@ var obj = {
 Тексты встроенных функций, используемые в инициализации виджета.
 ```javascript
 /// javascript
+function CreateTheme(color) {
+	return {
+		colorBlack: "#000",
+		colorWrite: "#fff",
+		colorLink: `hsl(${color}, 44%, 52%)`,
+		colorLinkHover: `hsl(${color}, 44%, 40%)`,
+		colorLinkNoActive: `hsl(${color}, 26%, 36%)`,
+		colorLinkDark: `hsl(${color}, 44%, 76%)`,
+		colorCommentBgDefault: `hsl(${color}, 44%, 93%)`,
+		colorCommentSelect: `hsl(${color}, 43%, 85%)`,
+		colorCommentFocus: `hsl(${color}, 42%, 72%`,
+		colorBrend: `hsl(${color}, 45%, 71%)`,
+		colorRed: "#ef4c47"
+	};
+}
 function CommentRender(val) {
 	return val.toString(); // this - текущий DOM элемент
 }
