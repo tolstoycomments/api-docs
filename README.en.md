@@ -1,4 +1,6 @@
 # Tolstoy Comment Api Documentation
+*Read this in other languages: [Русский](README.md), [English](README.en.md)*
+
 This documentation is intended for those who have already registered [tolstoycomments.com](https://tolstoycomments.com/auth/reg) and have access to the administration panel. JavaScript basic knowledge is also required to work with the documentation.
 
 The documentation highlights:
