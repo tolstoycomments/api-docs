@@ -478,6 +478,8 @@ This is the full list of all widget initialization parameters with default param
             // example of changing the link color
             // theme: { colorLink: 'red' }
             theme: null, // CreateTheme(color)
+            // widget localization
+			lang: GetLang(),
         }
     });
 </script>
@@ -525,6 +527,9 @@ function LoadTitle(win) {
 }
 function IsMobile() {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+}
+function GetLang(){
+	return window.navigator.language;
 }
 ```
 
