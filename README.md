@@ -476,6 +476,8 @@ var obj = {
 			// пример смены цвета ссылок:
 			// theme: { colorLink: 'red' }
 			theme: null, // CreateTheme(color)
+			// локализация виджета
+			lang: GetLang(),
 		}
 	});
 </script>
@@ -523,6 +525,9 @@ function LoadTitle(win) {
 }
 function IsMobile() {
 	return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+}
+function GetLang(){
+	return window.navigator.language;
 }
 ```
 
