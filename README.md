@@ -130,8 +130,13 @@
 	window["tolstoycomments"].push({
 		action: "init",
 		values: {
-			comment_show_sort: "desc", // "asc", "desc", default: null - "asc"
-			comment_show_format: "linear" // "linear", "tree", default: null - "linear"
+			// "asc" - сначала старые (по умолчанию)
+			// "desc" - сначала новые
+			comment_show_sort: null, // null - сначала старые (по умолчанию)
+			// вложенность комментариев
+			// "linear" - без вложенности (по умолчанию)
+			// "tree" - вложенный формат отображения
+			comment_show_format: null, // null - без вложенности (по умолчанию)
 		}
 	});
 </script>
