@@ -12,7 +12,8 @@
 ## Содержание
 + [Введение](#introduction)
 + [Инициализация виджета](#init)
-+ [Подключение виджета с комментариями](#connect-comment)
++ [Сортировка комментариев и древовидный вид](#connect-comment)
++ [Сортировка и древовидный вид комментариев](#comment-sort-and-format)
 + [Привязка комментариев по URL и Identity](#init-identity)
 + [Счетчик комментариев](#counter-comment)
 + [Мини-виджеты](#miniwidget)
@@ -117,6 +118,25 @@
 <!-- /Tolstoy Comments Widget -->
 ```
 Тег с классом `tolstoycomments-feed` задан в настройках по умолчанию. Как изменить класс, можно найти в разделе всех параметров инициализации. Изменить настройки дизайна виджета вы можете в панели администрирования Tolstoy Comments.
+
+## <a name="comment-sort-and-format"></a>Сортировка комментариев и древовидный вид
+По умолчанию комментарии в виджете выводятся без вложенности с сортировкой "старые сверху". Менять вложенность и сортировку для всех страниц виджета можно через панель администрирования виджетом: "Дизайн", "Вложенность сообщений" и "Сортировать сообщения". Переопределить поведение виджета для отдельной страницы можно с помощью параметров инициализации:
+```html
+/// html
+<!-- Tolstoy Comments Widget -->
+<div class="tolstoycomments-feed"></div>
+<script type="text/javascript">
+	window["tolstoycomments"] = window["tolstoycomments"] || [];
+	window["tolstoycomments"].push({
+		action: "init",
+		values: {
+			comment_show_sort: "desc", // "asc", "desc", default: null - "asc"
+			comment_show_format: "linear" // "linear", "tree", default: null - "linear"
+		}
+	});
+</script>
+<!-- /Tolstoy Comments Widget -->
+```
 
 ## <a name="init-identity"></a>Привязка комментариев по URL и Identity
 identity: произвольная строка, которая служит идентификатором страницы сайта (это может быть порядковый номер статьи в базе или полная ссылка).
