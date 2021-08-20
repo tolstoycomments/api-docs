@@ -51,7 +51,7 @@
 		var f = d.getElementsByTagName(s)[0],
 			j = d.createElement(s);
 		j.async = !0;
-		j.src = "//test.tolstoycomments.com/sitejs/app.js?i=" + l + "&x=" + x + "&t=" + w[l].t;
+		j.src = "//web.tolstoycomments.com/sitejs/app.js?i=" + l + "&x=" + x + "&t=" + w[l].t;
 		f.parentNode.insertBefore(j, f);
 	})(window, document, "script", "tolstoycomments", "SITE_ID");
 </script>
@@ -211,7 +211,7 @@ title: заголовок страницы сайта. По умолчанию �
 		var f = d.getElementsByTagName(s)[0],
 			j = d.createElement(s);
 		j.async = !0;
-		j.src = "//test.tolstoycomments.com/sitejs/app.js?i=" + l + "&x=" + x + "&t=" + w[l].t;
+		j.src = "//web.tolstoycomments.com/sitejs/app.js?i=" + l + "&x=" + x + "&t=" + w[l].t;
 		f.parentNode.insertBefore(j, f);
 	})(window, document, "script", "tolstoycomments", "SITE_ID");
 </script>
@@ -232,6 +232,9 @@ title: заголовок страницы сайта. По умолчанию �
 ```
 
 ## <a name="miniwidget"></a>Мини-виджеты
+### <a name="miniwidget-profile"></a>Профиль пользователя
+
+### <a name="miniwidget-default"></a>Самые обсуждаемые записи / Последние комментарии / Лучшие комментарии
 Мини-виджеты позволяют вывести самые горячие материалы на сайте. Получить код минивиджета можно из раздела **Мини-виджеты** панели администрирования. Пример кода мини-виджета:
 ```html
 /// html
@@ -243,7 +246,7 @@ title: заголовок страницы сайта. По умолчанию �
 		var f = d.getElementsByTagName(s)[0],
 			j = d.createElement(s);
 		j.async = !0;
-		j.src = "//test.tolstoycomments.com/sitejs/app.js?i=" + l + "&x=" + x + "&t=" + w[l].t;
+		j.src = "//web.tolstoycomments.com/sitejs/app.js?i=" + l + "&x=" + x + "&t=" + w[l].t;
 		f.parentNode.insertBefore(j, f);
 	})(window, document, "script", "tolstoycomments", "SITE_ID");
 </script>
