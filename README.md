@@ -17,6 +17,9 @@
 + [Привязка комментариев по URL и Identity](#init-identity)
 + [Счетчик комментариев](#counter-comment)
 + [Мини-виджеты](#miniwidget)
+	- [Мини-виджет / Реакции](#miniwidget-reaction)
+	- [Мини-виджет / Профиль пользователя](#miniwidget-profile)
+	- [Мини-виджеты / Самые обсуждаемые записи / Последние комментарии / Лучшие комментарии](#miniwidget-default)
 + [Собственный стиль счетчика комментариев](#comment-render)
 + [Задание произвольного класса для вывода виджета](#desktop-class)
 + [Форматы виджета](#widget-format)
@@ -232,9 +235,119 @@ title: заголовок страницы сайта. По умолчанию �
 ```
 
 ## <a name="miniwidget"></a>Мини-виджеты
-### <a name="miniwidget-profile"></a>Профиль пользователя
+### <a name="miniwidget-profile"></a>Мини-виджет / Профиль пользователя
+Пример реализации профиля пользвоателя можно посмотреть в [нашем блоге](https://blogs.tolstoycomments.com/mw-profile/)
+```html
+/// html
+<!-- Tolstoy Comments Init -->
+<script type="text/javascript">
+	!(function(w, d, s, l, x) {
+		w[l] = w[l] || [];
+		w[l].t = w[l].t || new Date().getTime();
+		var f = d.getElementsByTagName(s)[0],
+			j = d.createElement(s);
+		j.async = !0;
+		j.src = "//web.tolstoycomments.com/sitejs/app.js?i=" + l + "&x=" + x + "&t=" + w[l].t;
+		f.parentNode.insertBefore(j, f);
+	})(window, document, "script", "tolstoycomments", "SITE_ID");
+</script>
+<!-- /Tolstoy Comments Init -->
 
-### <a name="miniwidget-default"></a>Самые обсуждаемые записи / Последние комментарии / Лучшие комментарии
+<!-- Tolstoy Comments EventsWidget -->
+<div id="tolstoycomments-profile"></div>
+<script type="text/javascript">
+	window["tolstoycomments"] = window["tolstoycomments"] || [];
+	window["tolstoycomments"].push({
+		action: "eventwidget",
+		values: {
+			id: "tolstoycomments-profile",
+			key: "KEY",
+			locale_login: "Войти", // текст кнопки перед авторизацией
+			profile: "https://domain.xyz/profile#tc-profile", // ссылка на профиль пользователя
+			profile_target_blank: true, // открывать ссылку на профиль пользователя в новой вкладке
+			events: "https://domain.xyz/profile#tc-events", // лента уведомлений пользователя
+			events_target_blank: true // открывать ссылку на ленту уведомлений пользователя в новой вкладке
+		}
+	});
+</script>
+<!-- /Tolstoy Comments EventsWidget -->
+```
+### <a name="miniwidget-reaction"></a>Мини-виджет / Реакции
+Мини-виджет “Реакции” позволяет пользователям оценивать ваши материалы. Доступны два формата виджета реакций: emoji и звезды.
+Пример виджета emoji:
+```html
+/// html
+<!-- Tolstoy Comments Init -->
+<script type="text/javascript">
+	!(function(w, d, s, l, x) {
+		w[l] = w[l] || [];
+		w[l].t = w[l].t || new Date().getTime();
+		var f = d.getElementsByTagName(s)[0],
+			j = d.createElement(s);
+		j.async = !0;
+		j.src = "//web.tolstoycomments.com/sitejs/app.js?i=" + l + "&x=" + x + "&t=" + w[l].t;
+		f.parentNode.insertBefore(j, f);
+	})(window, document, "script", "tolstoycomments", "SITE_ID");
+</script>
+<!-- /Tolstoy Comments Init -->
+
+<!-- Tolstoy Comments MiniWidget -->
+<div id="tolstoycomments-reaction-emoji"></div>
+<script type="text/javascript">
+	window["tolstoycomments"] = window["tolstoycomments"] || [];
+	window["tolstoycomments"].push({
+		action: "reaction",
+		values: {
+			id: "tolstoycomments-reaction-emoji",
+			key: "KEY",
+			header: "Оцените материал", // заголовок виджета (null - поле отсутствует)
+			description: "Всего голосов: {count}", // описание виджета (null - поле отсутствует); {count} - переменная, заменяется в виджете на число
+			type: "emoji",
+			emoji: ["1f44d","1f44e"], // коды emoji, допускается использовать от 1 до 8 иконок. (допустимые коды доступны в этом репозитории https://github.com/twitter/twemoji/tree/master/assets/72x72)
+			hide_default_values: false, // скрывать оценки до выставления голоса (false - по умолчанию)
+			disable_update_values: false // запретить переголосовывать (false - по умолчанию)
+		},
+	});
+</script>
+<!-- /Tolstoy Comments MiniWidget -->
+```
+Пример виджета со звездами:
+```html
+/// html
+<!-- Tolstoy Comments Init -->
+<script type="text/javascript">
+	!(function(w, d, s, l, x) {
+		w[l] = w[l] || [];
+		w[l].t = w[l].t || new Date().getTime();
+		var f = d.getElementsByTagName(s)[0],
+			j = d.createElement(s);
+		j.async = !0;
+		j.src = "//web.tolstoycomments.com/sitejs/app.js?i=" + l + "&x=" + x + "&t=" + w[l].t;
+		f.parentNode.insertBefore(j, f);
+	})(window, document, "script", "tolstoycomments", "SITE_ID");
+</script>
+<!-- /Tolstoy Comments Init -->
+
+<!-- Tolstoy Comments MiniWidget -->
+<div id="tolstoycomments-reaction-stars"></div>
+<script type="text/javascript">
+	window["tolstoycomments"] = window["tolstoycomments"] || [];
+	window["tolstoycomments"].push({
+		action: "reaction",
+		values: {
+			id: "tolstoycomments-reaction-stars",
+			key: "KEY",
+			header: "Оцените материал", // заголовок виджета (null - поле отсутствует)
+			description: "Всего голосов: {count}. Средняя оценка: {avg}", // описание виджета (null - поле отсутствует); {count} - переменная, заменяется в виджете на число: {avg} - средняя оценка
+			type: "stars",
+			hide_default_values: false, // скрывать среднюю оценку до выставления голоса (false - по умолчанию)
+			disable_update_values: false // запретить переголосовывать (false - по умолчанию)
+		},
+	});
+</script>
+<!-- /Tolstoy Comments MiniWidget -->
+```
+### <a name="miniwidget-default"></a>Мини-виджеты / Самые обсуждаемые записи / Последние комментарии / Лучшие комментарии
 Мини-виджеты позволяют вывести самые горячие материалы на сайте. Получить код минивиджета можно из раздела **Мини-виджеты** панели администрирования. Пример кода мини-виджета:
 ```html
 /// html
