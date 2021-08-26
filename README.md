@@ -16,6 +16,7 @@
 + [Сортировка и древовидный вид комментариев](#comment-sort-and-format)
 + [Привязка комментариев по URL и Identity](#init-identity)
 + [Счетчик комментариев](#counter-comment)
++ [Счетчик реакций](#counter-reaction)
 + [Мини-виджеты](#miniwidget)
 	- [Мини-виджет / Профиль пользователя](#miniwidget-profile)
 	- [Мини-виджет / Реакции](#miniwidget-reaction)
