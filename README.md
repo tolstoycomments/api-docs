@@ -251,19 +251,19 @@ title: заголовок страницы сайта. По умолчанию �
 </script>
 <!-- /Tolstoy Comments Reaction Counter -->
 ```
-Для вывода счетчика реакций нужно создать html элемент с классом, переданным в переменной `reaction_class` и указать тип счетчика в параметре `data-type`: `votes`или `stars`. Пример:
+Для вывода счетчика реакций нужно создать html элемент с классом, переданным в переменной `reaction_class` и указать тип счетчика в параметре `data-type`: `emoji`или `stars`. Пример:
 ```html
 /// html
-<span class="tolstoycomments-rc" data-type="votes" data-url="https://google.com/"></span>
+<span class="tolstoycomments-rc" data-type="emoji" data-url="https://google.com/"></span>
 или
-<span class="tolstoycomments-rc" data-type="votes" data-identity="CUSTOM ID"></span>
+<span class="tolstoycomments-rc" data-type="emoji" data-identity="CUSTOM ID"></span>
 ```
 Пример счетчика с текстом `Нет реакций` по умолчанию:
 ```html
 /// html
-<span class="tolstoycomments-rc" data-type="votes" data-url="https://google.com/">Нет реакций</span>
+<span class="tolstoycomments-rc" data-type="emoji" data-url="https://google.com/">Нет реакций</span>
 или
-<span class="tolstoycomments-rc" data-type="votes" data-identity="CUSTOM ID">Нет реакций</span>
+<span class="tolstoycomments-rc" data-type="emoji" data-identity="CUSTOM ID">Нет реакций</span>
 ```
 В параметре `data-url` нужно передать полную ссылку на статью, для которой необходимо сделать вывод количества реакций.
 
