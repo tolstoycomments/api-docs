@@ -16,6 +16,7 @@
 + [Сортировка и древовидный вид комментариев](#comment-sort-and-format)
 + [Привязка комментариев по URL и Identity](#init-identity)
 + [Счетчик комментариев](#counter-comment)
++ [Счетчик реакций](#counter-reaction)
 + [Мини-виджеты](#miniwidget)
 	- [Мини-виджет / Профиль пользователя](#miniwidget-profile)
 	- [Мини-виджет / Реакции](#miniwidget-reaction)
@@ -232,6 +233,70 @@ title: заголовок страницы сайта. По умолчанию �
 	});
 </script>
 <!-- /Tolstoy Comments Comment Counter -->
+```
+
+## <a name="counter-reaction"></a>Счетчик реакций
+Для вывода счетчика реакций на странице, нужно подключаить параметры инициализации счетчика реакций
+```html
+/// html
+<!-- Tolstoy Comments Reaction Counter -->
+<script type="text/javascript">
+	window["tolstoycomments"] = window["tolstoycomments"] || [];
+	window["tolstoycomments"].push({
+		action: "init",
+		values: {
+			reaction_class: "tolstoycomments-rc"
+		}
+	});
+</script>
+<!-- /Tolstoy Comments Reaction Counter -->
+```
+Для вывода счетчика реакций нужно создать html элемент с классом, переданным в переменной `reaction_class` и указать тип счетчика в параметре `data-type`: `emoji`или `stars`. Пример:
+```html
+/// html
+<span class="tolstoycomments-rc" data-type="emoji" data-url="https://google.com/"></span>
+или
+<span class="tolstoycomments-rc" data-type="emoji" data-identity="CUSTOM ID"></span>
+```
+Пример счетчика с текстом `Нет реакций` по умолчанию:
+```html
+/// html
+<span class="tolstoycomments-rc" data-type="emoji" data-url="https://google.com/">Нет реакций</span>
+или
+<span class="tolstoycomments-rc" data-type="emoji" data-identity="CUSTOM ID">Нет реакций</span>
+```
+В параметре `data-url` нужно передать полную ссылку на статью, для которой необходимо сделать вывод количества реакций.
+
+Если нужно вывести счетчик реакций на главной странице или в разделе, но при этом не выводить сам виджет, то достаточно подключить основной код виджета и код счетчика реакций.
+Пример:
+```html
+/// html
+<!-- Tolstoy Comments Init -->
+<script type="text/javascript">
+	!(function(w, d, s, l, x) {
+		w[l] = w[l] || [];
+		w[l].t = w[l].t || new Date().getTime();
+		var f = d.getElementsByTagName(s)[0],
+			j = d.createElement(s);
+		j.async = !0;
+		j.src = "//web.tolstoycomments.com/sitejs/app.js?i=" + l + "&x=" + x + "&t=" + w[l].t;
+		f.parentNode.insertBefore(j, f);
+	})(window, document, "script", "tolstoycomments", "SITE_ID");
+</script>
+<!-- /Tolstoy Comments Init -->
+
+<!-- Tolstoy Comments Reaction Counter -->
+<div class="tolstoycomments-feed"></div>
+<script type="text/javascript">
+	window["tolstoycomments"] = window["tolstoycomments"] || [];
+	window["tolstoycomments"].push({
+		action: "init",
+		values: {
+			reaction_class: "tolstoycomments-rc"
+		}
+	});
+</script>
+<!-- /Tolstoy Comments Reaction Counter -->
 ```
 
 ## <a name="miniwidget"></a>Мини-виджеты
@@ -658,6 +723,10 @@ var obj = {
 			comment_class: "", 
 			// функция рендеринга кол-ва комментариев, this - текущий DOM элемент
 			comment_render: CommentRender, 
+			// класс элементов для вывода кол-ва реакций в статьях
+			reaction_class: "", 
+			// функция рендеринга кол-ва реакций, this - текущий DOM элемент
+			reaction_render: ReactionRender, 
 			// на мобильных устройствах при выборе дизайна с вызовом виджета по кнопке
 			comment_button_text: "Обсудить", 
 			// класс элемента в который будет отрендерин виджет при встроенном в сайт дизайне
