@@ -479,7 +479,7 @@ This is the full list of all widget initialization parameters with default param
             // theme: { colorLink: 'red' }
             theme: null, // CreateTheme(color)
             // widget localization
-			lang: GetLang(),
+	    lang: GetLang(), // "ar", "ru", "en", "uk", "tr", "pl" are supported
         }
     });
 </script>
